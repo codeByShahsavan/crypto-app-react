@@ -1,10 +1,7 @@
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
-
 }
-
-
 body {
   margin: auto;
   color:#fff;
@@ -18,7 +15,6 @@ body {
   margin: 0;
   box-sizing: border-box;
 }
-
 a{
   text-decoration: inherit;
   color: inherit;
