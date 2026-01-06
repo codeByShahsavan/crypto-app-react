@@ -3,16 +3,20 @@ import {searchCoin} from "../../services/cryptoApi";
 
 function Search({currency,setCurrency}) {
     const [text,setText]=useState("")
-    const [coin,setCoin]=useState([])
+    const [coins,setCoins]=useState([])
+    
     useEffect(()=>{
         const controller=new AbortController()
+        
+            setCoins([])
             if(!text) return
             const search=async ()=>{
         try {
             const res=await fetch(searchCoin(text),{signal:controller.signal})
             const json=await res.json()
             if(json.coins) {
-                setCoin(json.coins)
+                setCoins(json.coins)
+                console.log(coins)
             }
             else{
                 console.log(json.status.error_message)
@@ -42,6 +46,16 @@ function Search({currency,setCurrency}) {
             <option value="eur">EUR</option>
             <option value="jpy">JPY</option>
         </select>
+        <div>
+            <ul>
+                {coins.map((coin)=>(
+                      <li key={coin.id}>
+                        <img src={coin.thumb} alt={coin.name} />
+                        <p>{coin.name}</p>
+                      </li>
+                ))}
+            </ul>
+        </div>
     </div>
   )
 }
