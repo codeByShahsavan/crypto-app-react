@@ -11,7 +11,8 @@ function Search({currency,setCurrency}) {
     useEffect(()=>{
         const controller=new AbortController()
 
-            setCoins([])
+            setCoins([]);
+
             if(!text) {
                 setIsLoading(false)
                 return
